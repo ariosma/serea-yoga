@@ -1,0 +1,27 @@
+# Serea · Yoga atlántico
+
+Web editorial y responsive de yoga al atardecer inspirada en Fisterra y Costa da Morte. HTML, CSS y JavaScript sin compilación.
+
+## Publicación
+
+GitHub Pages sirve la rama `main`, carpeta raíz. Las rutas de recursos son relativas para funcionar bajo `/serea-yoga/`.
+
+## Activar reservas reales
+
+Editar `config.js`: sustituir el número ficticio por el contacto real en formato internacional sin `+`, espacios ni guiones, y cambiar `demo` a `false`. Con el modo demostración activo no se contacta a ningún número; se puede revisar y copiar la consulta.
+
+Antes de ofrecer el servicio real: completar identidad y contacto del responsable, condiciones de reserva y cancelación, duración, precios, disponibilidad y material. Revisar los textos y las condiciones de uso de las playas con la persona responsable del servicio.
+
+El formulario prepara un mensaje de consulta; WhatsApp permite revisarlo antes de enviarlo. No hay backend, cobros ni confirmación automática. Los datos no se guardan por la web.
+
+## Recursos
+
+- Fotografías originales generadas con IA para este concepto, no documentales. Formato WebP.
+- Fuentes: DM Sans y Playfair Display mediante Google Fonts.
+- Información de playas: https://concellofisterra.gal/turismo/praias/es
+
+## Desarrollo local
+
+`python3 -m http.server 4173`
+
+Abrir http://localhost:4173. No se necesitan dependencias.
