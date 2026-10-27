@@ -14,26 +14,18 @@ Antes de ofrecer el servicio real: completar identidad y contacto del responsabl
 
 El formulario prepara un mensaje de consulta; WhatsApp permite revisarlo antes de enviarlo. No hay backend, cobros ni confirmación automática. Los datos no se guardan por la web.
 
-## Recursos
+## Recursos reales
 
-- Fotografías originales generadas con IA para este concepto, no documentales. Formato WebP.
-- Fuentes: DM Sans y Playfair Display mediante Google Fonts.
-- Información de playas: https://concellofisterra.gal/turismo/praias/es
+Siete fotografías únicas facilitadas por el cliente, convertidas a WebP sin alterar su contenido. Una portada, cuatro imágenes en el álbum, una en esencia y una en lugares. Se ha omitido una fotografía adjunta duplicada píxel a píxel.
+
+Un vídeo vertical de una sesión, con controles nativos, sin reproducción automática y carga bajo demanda. Los dos adjuntos muestran la misma grabación; se utiliza una única versión, comprimida en H.264/AAC con faststart. El póster procede del propio vídeo.
+
+Todos los recursos utilizados están en `assets/real/`. Las sesiones se presentan en distintas playas da Costa da Morte, con ubicación concreta a confirmar por WhatsApp.
 
 ## Desarrollo local
 
 `python3 -m http.server 4173`
 
-Abrir http://localhost:4173. No se necesitan dependencias.
+## Galería y movimiento
 
-## Galería
-
-Seis escenas en un mosaico responsive, con filtros de movimiento, pausa y paisaje. Las fotos se amplían en un visor que admite flechas de teclado, cierre con Escape y gestos horizontales en dispositivos táctiles. Sin JavaScript, cada fotografía sigue siendo un enlace al archivo original.
-
-Las cuatro nuevas imágenes (`yoga-en-grupo.webp`, `yoga-entre-amigas.webp`, `detalles-de-la-pausa.webp`, `una-pausa-compartida.webp`) son escenas ilustrativas generadas con IA, no sesiones documentales ni clientes reales.
-
-La composición final muestra nueve fotografías diferentes, sin reutilizar una imagen entre secciones: una portada, seis escenas de galería, una imagen de esencia y una vista de los lugares. Las escenas adicionales `yoga-a-tu-ritmo.webp`, `el-ritmo-del-mar.webp` y `horizonte-atlantico.webp` también son ilustraciones fotográficas generadas con IA.
-
-## Movimiento y profundidad
-
-Parallax al desplazarse en la portada y en las ocho imágenes interiores, con distintas intensidades según el encuadre. Los títulos de las ocho secciones y los motivos de fondo se desplazan en otra capa. El formulario, los botones y las imágenes ampliadas permanecen estables. El movimiento sigue el desplazamiento nativo y se desactiva si se solicita reducir movimiento.
+Álbum con cuatro imágenes, filtros y visor ampliado con teclado, Escape y gestos táctiles. Parallax en portada, fotografías interiores y títulos, respetando la preferencia de movimiento reducido. El vídeo conserva su encuadre vertical completo y controles estables.
