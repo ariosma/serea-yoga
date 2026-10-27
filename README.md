@@ -34,6 +34,6 @@ Todos los recursos utilizados están en `assets/real/`. Las sesiones se presenta
 
 Selector permanente en la cabecera para galego, español e inglés. Las traducciones están en `translations.js` y se aplican mediante `i18n.js`, manteniendo los campos del formulario. Incluyen metadatos, textos alternativos, galería, avisos y consulta de WhatsApp. La preferencia se guarda localmente; `?lang=gl`, `?lang=es` y `?lang=en` permiten compartir un idioma concreto. El español es la versión de respaldo sin JavaScript.
 
-## Álbum cinematográfico
+## Portada e interiores
 
-`cinema.js` convierte las cuatro fotos del álbum en escenas con un fondo ambiental, un marco flotante y desplazamiento, escala y rotación vinculados al scroll. Cada escena utiliza una única fotografía en sus planos. La portada añade zoom y desplazamiento del titular. Con movimiento reducido se utiliza la galería estática y se desactivan las transformaciones.
+La portada mantiene el zoom y desplazamiento del titular mediante `hero-motion.js`. El álbum vuelve al mosaico original de cuatro fotos, filtros y visor ampliado. Los interiores conservan el parallax suave anterior. Se respeta la preferencia de movimiento reducido.
