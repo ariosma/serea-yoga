@@ -31,3 +31,5 @@ Abrir http://localhost:4173. No se necesitan dependencias.
 Seis escenas en un mosaico responsive, con filtros de movimiento, pausa y paisaje. Las fotos se amplían en un visor que admite flechas de teclado, cierre con Escape y gestos horizontales en dispositivos táctiles. Sin JavaScript, cada fotografía sigue siendo un enlace al archivo original.
 
 Las cuatro nuevas imágenes (`yoga-en-grupo.webp`, `yoga-entre-amigas.webp`, `detalles-de-la-pausa.webp`, `una-pausa-compartida.webp`) son escenas ilustrativas generadas con IA, no sesiones documentales ni clientes reales.
+
+La composición final muestra nueve fotografías diferentes, sin reutilizar una imagen entre secciones: una portada, seis escenas de galería, una imagen de esencia y una vista de los lugares. Las escenas adicionales `yoga-a-tu-ritmo.webp`, `el-ritmo-del-mar.webp` y `horizonte-atlantico.webp` también son ilustraciones fotográficas generadas con IA.
