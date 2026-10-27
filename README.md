@@ -33,3 +33,7 @@ Seis escenas en un mosaico responsive, con filtros de movimiento, pausa y paisaj
 Las cuatro nuevas imágenes (`yoga-en-grupo.webp`, `yoga-entre-amigas.webp`, `detalles-de-la-pausa.webp`, `una-pausa-compartida.webp`) son escenas ilustrativas generadas con IA, no sesiones documentales ni clientes reales.
 
 La composición final muestra nueve fotografías diferentes, sin reutilizar una imagen entre secciones: una portada, seis escenas de galería, una imagen de esencia y una vista de los lugares. Las escenas adicionales `yoga-a-tu-ritmo.webp`, `el-ritmo-del-mar.webp` y `horizonte-atlantico.webp` también son ilustraciones fotográficas generadas con IA.
+
+## Movimiento y profundidad
+
+Parallax al desplazarse en la portada y en las ocho imágenes interiores, con distintas intensidades según el encuadre. Los títulos de las ocho secciones y los motivos de fondo se desplazan en otra capa. El formulario, los botones y las imágenes ampliadas permanecen estables. El movimiento sigue el desplazamiento nativo y se desactiva si se solicita reducir movimiento.

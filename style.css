@@ -40,3 +40,18 @@
 @media(min-width:761px) and (max-width:1050px){.header{position:relative;z-index:5}.header-cta{margin-left:auto}.menu{display:flex;width:26px;gap:6px;flex-direction:column;background:none;border:0;padding:7px 0}.menu span{width:24px;height:1px;background:var(--ink)}.header nav{display:none;position:absolute;top:100px;left:0;right:0;padding:20px 5vw;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 12px 15px #0001}.header nav.open{display:flex;flex-direction:column;gap:0}.header nav a{font-size:14px;padding:14px 0}}
 
 .gallery-grid.is-single .gallery-shot:not([hidden]){grid-column:1/-1}
+
+/* Scroll-linked photo windows: text stays still while the coastline moves behind it. */
+@media(prefers-reduced-motion:no-preference){
+ .motion-enabled .hero-image{height:145%;top:-22.5%}
+ .parallax-surface>img{transform:translate3d(0,var(--photo-drift,0px),0) scale(1.24);transition:none;will-change:transform}
+ .gallery-shot:hover .parallax-surface>img,.gallery-shot:focus-visible .parallax-surface>img,.place-feature:hover .parallax-surface>img{transform:translate3d(0,var(--photo-drift,0px),0) scale(1.24)}
+}
+@media(max-width:760px) and (prefers-reduced-motion:no-preference){.motion-enabled .hero-image{height:135%;top:-17.5%}}
+@media(prefers-reduced-motion:reduce){.parallax-surface>img{transform:none!important;will-change:auto}}
+@media print{.parallax-surface>img{transform:none!important}}
+
+.closing{position:relative;overflow:hidden;isolation:isolate}.closing:before{content:'';position:absolute;width:420px;height:420px;border:1px solid #b77b5729;border-radius:50%;top:-180px;left:-150px;z-index:-1;pointer-events:none;box-shadow:0 0 0 28px #b77b570a,0 0 0 58px #b77b5706}
+@media(prefers-reduced-motion:no-preference){.parallax-copy{translate:0 var(--copy-drift,0px)}.motion-enabled .quote:after,.motion-enabled .closing:before{translate:0 var(--section-drift,0px)}}
+@media(prefers-reduced-motion:reduce){.parallax-copy,.quote:after,.closing:before{translate:none!important}}
+@media print{.parallax-copy,.quote:after,.closing:before{translate:none!important}}

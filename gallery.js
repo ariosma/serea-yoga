@@ -17,6 +17,7 @@
   visible=shots.filter(shot=>!shot.hidden);
   grid.classList.toggle('is-filtered',category!=='all');
   grid.classList.toggle('is-single',visible.length===1);
+  window.dispatchEvent(new Event('serea:layout'));
   document.querySelector('#gallery-status').textContent=`${visible.length} ${visible.length===1?'imagen':'imágenes'}.`;
  }));
  function show(index){

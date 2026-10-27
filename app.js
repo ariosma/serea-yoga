@@ -35,6 +35,9 @@ document.querySelectorAll('[data-legal]').forEach(button=>button.addEventListene
  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
  const mobile = window.matchMedia('(max-width: 760px)');
  const hero = document.querySelector('.hero');
+ const photoSurfaces = [...document.querySelectorAll('.gallery-shot figure, .place-image, .essence-photo')];
+ const copyLayers = [...document.querySelectorAll('main .section h2, .essence h2, .quote > p, .closing > p')].map(element => ({element, section: element.closest('section')}));
+ const depthSections = [...document.querySelectorAll('.quote, .closing')];
  let frame = 0;
  let observer;
  const revealTargets = [...document.querySelectorAll('.intro-grid > *, .ritual article, .essence-copy > *, .section-head > *, .place-copy > *, .environment, .quote > *, .booking-intro > *, .booking-form, .faq > div:first-child, .faq-list details, .closing > *')];
@@ -46,11 +49,33 @@ document.querySelectorAll('[data-legal]').forEach(button=>button.addEventListene
   frame = 0;
   if (preference.matches) return;
   const rect = hero.getBoundingClientRect();
-  // Read layout once per frame and stop changing the image after it leaves view.
+  const photoRects = photoSurfaces.map(surface => ({surface, rect: surface.getBoundingClientRect()}));
+  const copyRects = copyLayers.map(layer => ({...layer, rect: layer.section.getBoundingClientRect()}));
+  const sectionRects = depthSections.map(section => ({section, rect: section.getBoundingClientRect()}));
+  // Batch geometry reads before applying transforms, keeping page scrolling native.
   if (rect.bottom > 0 && rect.top < innerHeight) {
    const travel = Math.min(Math.max(-rect.top, 0), rect.height);
-   hero.style.setProperty('--coast-drift', `${(travel * (mobile.matches ? 0.045 : 0.085)).toFixed(2)}px`);
+   hero.style.setProperty('--coast-drift', `${(travel * (mobile.matches ? 0.12 : 0.18)).toFixed(2)}px`);
   }
+  photoRects.forEach(({surface, rect: photo}) => {
+   if (photo.height > 0 && photo.bottom > 0 && photo.top < innerHeight) {
+    const progress = Math.max(-1, Math.min(1, (innerHeight / 2 - photo.top - photo.height / 2) / ((innerHeight + photo.height) / 2)));
+    const strength = surface.classList.contains('essence-photo') ? 0.055 : (mobile.matches ? 0.08 : 0.10);
+    surface.style.setProperty('--photo-drift', `${(progress * photo.height * strength).toFixed(2)}px`);
+   }
+  });
+  copyRects.forEach(({element, rect: section}) => {
+   if (section.bottom > 0 && section.top < innerHeight) {
+    const progress = Math.max(-1, Math.min(1, (innerHeight / 2 - section.top - section.height / 2) / ((innerHeight + section.height) / 2)));
+    element.style.setProperty('--copy-drift', `${(progress * (mobile.matches ? -12 : -24)).toFixed(2)}px`);
+   }
+  });
+  sectionRects.forEach(({section, rect: bounds}) => {
+   if (bounds.bottom > 0 && bounds.top < innerHeight) {
+    const progress = (innerHeight / 2 - bounds.top - bounds.height / 2) / ((innerHeight + bounds.height) / 2);
+    section.style.setProperty('--section-drift', `${(progress * 70).toFixed(2)}px`);
+   }
+  });
  }
  function requestFrame() {
   if (!preference.matches && !frame) frame = requestAnimationFrame(render);
@@ -60,6 +85,9 @@ document.querySelectorAll('[data-legal]').forEach(button=>button.addEventListene
   revealAll();
   document.documentElement.classList.toggle('motion-enabled', !preference.matches);
   hero.style.removeProperty('--coast-drift');
+  photoSurfaces.forEach(surface => {surface.classList.toggle('parallax-surface', !preference.matches); surface.style.removeProperty('--photo-drift');});
+  copyLayers.forEach(({element}) => {element.classList.toggle('parallax-copy', !preference.matches); element.style.removeProperty('--copy-drift');});
+  depthSections.forEach(section => section.style.removeProperty('--section-drift'));
   if (preference.matches) return;
   if ('IntersectionObserver' in window) {
    observer = new IntersectionObserver(entries => {
@@ -81,6 +109,8 @@ document.querySelectorAll('[data-legal]').forEach(button=>button.addEventListene
  }
  window.addEventListener('scroll', requestFrame, {passive: true});
  window.addEventListener('resize', requestFrame, {passive: true});
+ window.addEventListener('serea:layout', requestFrame);
+ window.addEventListener('load', requestFrame);
  document.addEventListener('focusin', event => {
   const target = event.target.closest('.reveal-pending');
   if (target) {target.classList.remove('reveal-pending'); observer?.unobserve(target);}
