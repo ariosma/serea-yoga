@@ -18,8 +18,9 @@
   grid.classList.toggle('is-filtered',category!=='all');
   grid.classList.toggle('is-single',visible.length===1);
   window.dispatchEvent(new Event('serea:layout'));
-  document.querySelector('#gallery-status').textContent=`${visible.length} ${visible.length===1?'imagen':'imágenes'}.`;
+  document.querySelector('#gallery-status').textContent=SereaI18n.imageCount(visible.length);
  }));
+ window.addEventListener('serea:language',()=>{document.querySelector('#gallery-status').textContent=SereaI18n.imageCount(visible.length);if(viewer.open)show(active);});
  function show(index){
   active=(index+visible.length)%visible.length;
   const shot=visible[active];
