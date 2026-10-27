@@ -25,3 +25,9 @@ El formulario prepara un mensaje de consulta; WhatsApp permite revisarlo antes d
 `python3 -m http.server 4173`
 
 Abrir http://localhost:4173. No se necesitan dependencias.
+
+## Galería
+
+Seis escenas en un mosaico responsive, con filtros de movimiento, pausa y paisaje. Las fotos se amplían en un visor que admite flechas de teclado, cierre con Escape y gestos horizontales en dispositivos táctiles. Sin JavaScript, cada fotografía sigue siendo un enlace al archivo original.
+
+Las cuatro nuevas imágenes (`yoga-en-grupo.webp`, `yoga-entre-amigas.webp`, `detalles-de-la-pausa.webp`, `una-pausa-compartida.webp`) son escenas ilustrativas generadas con IA, no sesiones documentales ni clientes reales.
